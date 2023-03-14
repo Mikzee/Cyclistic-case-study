@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="cyclistic-analysis">Cyclistic Analysis</h1>
+<p>Michael Zegas 2023-03-13</p>
+<h1 id="cyclistic-case-study"><strong>Cyclistic case study</strong></h1>
+<h2 id="scenario"><strong>Scenario</strong></h2>
+<p>“You are a junior data analyst working in the marketing analyst team
+at Cyclistic, a bike-share company in Chicago. The director of marketing
+believes the company’s future success depends on maximizing the number
+of annual memberships. Therefore, your team wants to understand how
+casual riders and annual members use Cyclistic bikes differently. From
+these insights, your team will design a new marketing strategy to
+convert casual riders into annual members. But first, Cyclistic
+executives must approve your recommendations, so they must be backed up
+with compelling data insights and professional data visualizations”</p>
+<h2 id="business-task"><strong>Business Task</strong></h2>
+<p>The company wants to increase the annual memberships as they make up
+most of the total profit compared to casual bike rentals. In order to do
+that, the analyst and the marketing team must get insights on how casual
+riders and annual members differ and why would casual riders would get
+an annual membership.</p>
+<h2 id="ask-phase"><strong>Ask phase</strong></h2>
+<ol style="list-style-type: decimal">
+<li>How do annual members and casual riders use Cyclistic bikes
+differently?</li>
+<li>Why would casual riders buy Cyclistic annual memberships?</li>
+<li>How can Cyclistic use digital media to influence casual riders to
+become members?</li>
+</ol>
+<h2 id="prepare"><strong>Prepare</strong></h2>
+<h3 id="dataset-source"><strong>Dataset source:</strong></h3>
+<p>The data has been made available by Motivate International Inc under
+this licence <a href="https://ride.divvybikes.com/data-license-agreement">https://ride.divvybikes.com/data-license-agreement</a>
+and they are available at: <a href="https://divvy-tripdata.s3.amazonaws.com/index.html">https://divvy-tripdata.s3.amazonaws.com/index.html</a>.
+The analysis is based on a 12 month period (02/2022 - 01/2023).</p>
+<h2 id="loading-libraries"><strong>Loading libraries</strong></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.1      ✔ stringr 1.5.0 
+## ✔ readr   2.1.3      ✔ forcats 0.5.2 
+## ✔ purrr   1.0.0      
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div>
+<pre><code>## Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geosphere)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oce)</span></code></pre></div>
+<pre><code>## Loading required package: gsw</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<pre><code>## Loading required package: timechange
+## 
+## Attaching package: &#39;lubridate&#39;
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;
+## 
+## The following object is masked from &#39;package:oce&#39;:
+## 
+##     rescale
+## 
+## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard
+## 
+## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<h2 id="importing-datasets-and-assigning-to-variables"><strong>Importing
+datasets and assigning to variables</strong></h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Importing</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>trips_02_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202202-divvy-tripdata/202202-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 115609 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>trips_03_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202203-divvy-tripdata/202203-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 284042 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>trips_04_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202204-divvy-tripdata/202204-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 371249 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>trips_05_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202205-divvy-tripdata/202205-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 634858 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>trips_06_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202206-divvy-tripdata/202206-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 769204 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>trips_07_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202207-divvy-tripdata/202207-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 823488 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>trips_08_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202208-divvy-tripdata/202208-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 785932 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>trips_09_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202209-divvy-tripdata/202209-divvy-publictripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 701339 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>trips_10_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202210-divvy-tripdata/202210-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 558685 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>trips_11_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202211-divvy-tripdata/202211-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 337735 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>trips_12_2022.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202212-divvy-tripdata/202212-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 181806 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>trips_01_2023.csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Desktop/cyclistic/Updated/202301-divvy-tripdata.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 190301 Columns: 13
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (7): ride_id, rideable_type, start_station_name, start_station_id, end_...
+## dbl  (4): start_lat, start_lng, end_lat, end_lng
+## dttm (2): started_at, ended_at
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Merging all data to one</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>trips_22_23.csv <span class="ot">&lt;-</span> <span class="fu">rbind</span>(trips_02_2022.csv, trips_03_2022.csv, trips_04_2022.csv, trips_05_2022.csv, trips_06_2022.csv, trips_07_2022.csv, trips_08_2022.csv,trips_09_2022.csv, trips_10_2022.csv, trips_11_2022.csv, trips_12_2022.csv, trips_01_2023.csv)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trips_22_23.csv)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 13
+##   ride_id        ridea…¹ started_at          ended_at            start…² start…³
+##   &lt;chr&gt;          &lt;chr&gt;   &lt;dttm&gt;              &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;  
+## 1 E1E065E7ED285… classi… 2022-02-19 18:08:41 2022-02-19 18:23:56 State … TA1305…
+## 2 1602DCDC5B30F… classi… 2022-02-20 17:41:30 2022-02-20 17:45:56 Halste… TA1309…
+## 3 BE7DD2AF4B55C… classi… 2022-02-25 18:55:56 2022-02-25 19:09:34 State … TA1305…
+## 4 A1789BDF84441… classi… 2022-02-14 11:57:03 2022-02-14 12:04:00 Southp… 13235  
+## 5 07DE78092C62F… classi… 2022-02-16 05:36:06 2022-02-16 05:39:00 State … TA1305…
+## 6 9A2F204F04AB7… classi… 2022-02-07 09:51:57 2022-02-07 10:07:53 St. Cl… 13016  
+## # … with 7 more variables: end_station_name &lt;chr&gt;, end_station_id &lt;chr&gt;,
+## #   start_lat &lt;dbl&gt;, start_lng &lt;dbl&gt;, end_lat &lt;dbl&gt;, end_lng &lt;dbl&gt;,
+## #   member_casual &lt;chr&gt;, and abbreviated variable names ¹​rideable_type,
+## #   ²​start_station_name, ³​start_station_id</code></pre>
+<h2 id="process-phase"><strong>Process phase</strong></h2>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a new column with the mean ride duration</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>trips_22_23.csv<span class="sc">$</span>duration <span class="ot">&lt;-</span> <span class="fu">difftime</span>(trips_22_23.csv<span class="sc">$</span>ended_at, trips_22_23.csv<span class="sc">$</span>started_at, <span class="at">units =</span> <span class="st">&quot;mins&quot;</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Clean data by removing n/a and assigning to new variable</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>trips_clean <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(trips_22_23.csv)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Cleaning ride duration</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>duration <span class="ot">&lt;-</span> <span class="fu">round</span>(trips_clean<span class="sc">$</span>duration, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Separate datetime column in columns: date, day, year, day_of_week, month name</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(trips_clean<span class="sc">$</span>started_at) </span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>day <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">as.Date</span>( trips_clean<span class="sc">$</span>date), <span class="st">&quot;%d&quot;</span>)</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">as.Date</span>(trips_clean<span class="sc">$</span>date), <span class="st">&quot;%Y&quot;</span>)</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>day_of_week <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">as.Date</span>(trips_clean<span class="sc">$</span>date), <span class="st">&quot;%A&quot;</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>month_name <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">as.Date</span>(trips_clean<span class="sc">$</span>date), <span class="st">&quot;%b&quot;</span>)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Changing the language from default language to English</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>lookup_table <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Δευτέρα&quot;</span> <span class="ot">=</span> <span class="st">&quot;Monday&quot;</span>,</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Τρίτη&quot;</span> <span class="ot">=</span> <span class="st">&quot;Tuesday&quot;</span>,</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Τετάρτη&quot;</span> <span class="ot">=</span> <span class="st">&quot;Wednesday&quot;</span>,</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Πέμπτη&quot;</span> <span class="ot">=</span> <span class="st">&quot;Thursday&quot;</span>,</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Παρασκευή&quot;</span> <span class="ot">=</span> <span class="st">&quot;Friday&quot;</span>,</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Σάββατο&quot;</span> <span class="ot">=</span> <span class="st">&quot;Saturday&quot;</span>,</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Κυριακή&quot;</span> <span class="ot">=</span> <span class="st">&quot;Sunday&quot;</span>)</span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>day_of_week <span class="ot">&lt;-</span> lookup_table[trips_clean<span class="sc">$</span>day_of_week]</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>lookup_table2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ιαν&quot;</span> <span class="ot">=</span> <span class="st">&quot;January&quot;</span>,</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Φεβ&quot;</span> <span class="ot">=</span> <span class="st">&quot;February&quot;</span>,</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Μαρ&quot;</span> <span class="ot">=</span> <span class="st">&quot;March&quot;</span>,</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Απρ&quot;</span> <span class="ot">=</span> <span class="st">&quot;April&quot;</span>,</span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Μαϊ&quot;</span> <span class="ot">=</span> <span class="st">&quot;May&quot;</span>,</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ιουν&quot;</span> <span class="ot">=</span> <span class="st">&quot;June&quot;</span>,</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ιουλ&quot;</span> <span class="ot">=</span> <span class="st">&quot;July&quot;</span>,</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Αυγ&quot;</span> <span class="ot">=</span> <span class="st">&quot;August&quot;</span>,</span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Σεπ&quot;</span> <span class="ot">=</span> <span class="st">&quot;September&quot;</span>,</span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Οκτ&quot;</span> <span class="ot">=</span> <span class="st">&quot;October&quot;</span>,</span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Νοε&quot;</span> <span class="ot">=</span> <span class="st">&quot;November&quot;</span>,</span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Δεκ&quot;</span> <span class="ot">=</span> <span class="st">&quot;December&quot;</span>)</span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>month_name <span class="ot">&lt;-</span> lookup_table2[trips_clean<span class="sc">$</span>month_name]</span></code></pre></div>
+<h2 id="analyze-phase"><strong>Analyze phase</strong></h2>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Finding the mean ride duration for all rides and then for each user type</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>avg_dur_total <span class="ot">&lt;-</span> <span class="fu">mean</span>(trips_clean<span class="sc">$</span>duration)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>avg_dur_total</span></code></pre></div>
+<pre><code>## Time difference of 16.96543 mins</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>avg_dur_per_user <span class="ot">&lt;-</span> trips_clean <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(member_casual) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_duration =</span> <span class="fu">mean</span>(duration))</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>avg_dur_per_user</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   member_casual avg_duration 
+##   &lt;chr&gt;         &lt;drtn&gt;       
+## 1 casual        23.81604 mins
+## 2 member        12.39751 mins</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Making a distance traveled column</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>ride_distance <span class="ot">&lt;-</span> <span class="fu">distGeo</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(trips_clean<span class="sc">$</span>start_lng, trips_clean<span class="sc">$</span>start_lat), <span class="at">ncol =</span> <span class="dv">2</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(trips_clean<span class="sc">$</span>end_lng, trips_clean<span class="sc">$</span>end_lat), <span class="at">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>ride_distance <span class="ot">&lt;-</span> trips_clean<span class="sc">$</span>ride_distance<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>trips_clean<span class="sc">$</span>ride_distance <span class="ot">&lt;-</span> <span class="fu">round</span>(trips_clean<span class="sc">$</span>ride_distance, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Finding the mean ride distance for all users and for each user type</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>avg_distance_total <span class="ot">&lt;-</span> <span class="fu">mean</span>(trips_clean<span class="sc">$</span>ride_distance)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>avg_distance_per_user <span class="ot">&lt;-</span> trips_clean <span class="sc">%&gt;%</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(member_casual) <span class="sc">%&gt;%</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_dist =</span> <span class="fu">mean</span>(ride_distance))</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>avg_distance_per_user</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   member_casual avg_dist
+##   &lt;chr&gt;            &lt;dbl&gt;
+## 1 casual            2.15
+## 2 member            2.06</code></pre>
+<h2 id="visualizing-data"><strong>Visualizing data</strong></h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Duration graph</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(avg_dur_per_user, <span class="fu">aes</span>(<span class="at">x =</span> member_casual, <span class="at">y =</span> avg_duration, <span class="at">fill=</span> member_casual)) <span class="sc">+</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Average duration per user type&quot;</span>, <span class="at">x=</span> <span class="st">&quot;User Type&quot;</span>, <span class="at">y=</span> <span class="st">&quot;Average duration&quot;</span>)</span></code></pre></div>
+<pre><code>## Don&#39;t know how to automatically pick scale for object of type &lt;difftime&gt;.
+## Defaulting to continuous.</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Duration for weekdays graph</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>trips_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(member_casual, day_of_week) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">number_of_rides =</span> <span class="fu">n</span>()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>            ,<span class="at">average_duration =</span> <span class="fu">mean</span>(<span class="fu">duration</span>()),<span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(member_casual, day_of_week)  <span class="sc">%&gt;%</span> </span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> day_of_week, <span class="at">y =</span> number_of_rides, <span class="at">fill =</span> member_casual)) <span class="sc">+</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Number of rides by User type during the week&quot;</span>,<span class="at">x=</span><span class="st">&quot;Days of the week&quot;</span>,<span class="at">y=</span><span class="st">&quot;Number of rides&quot;</span>,<span class="at">caption =</span> <span class="st">&quot;Data by Motivate International Inc&quot;</span>, <span class="at">fill=</span><span class="st">&quot;User type&quot;</span>) <span class="sc">+</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;top&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#distance graph</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(avg_distance_per_user, <span class="fu">aes</span>(<span class="at">x =</span> member_casual, <span class="at">y =</span> avg_dist, <span class="at">fill=</span> member_casual)) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Average distance per user type&quot;</span>, <span class="at">x=</span> <span class="st">&quot;User Type&quot;</span>, <span class="at">y=</span> <span class="st">&quot;Average distance&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bike type graph</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>trips_clean <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> member_casual, <span class="at">fill =</span> rideable_type)) <span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;User Type&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Bikes&quot;</span>) <span class="sc">+</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Bike Type for Each User Type&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>As shown by the analysis, there is not a significance difference in
+the average distance traveled between casual users and members. Members
+seem to have a similar number of rides during the weekdays but with less
+mean duration than the casual users. That signifies that casual users
+ride mostly for leisure than members who they seem to use bikes more
+like an alternative to public transport. There is not a significant
+difference in the rideable type for casual users, but among members
+there is a clear preference in classic bikes. The marketing team could
+focus on leisure oriented advertisement in order to get more annual
+memberships.</p>
+
+</body>
+</html>
