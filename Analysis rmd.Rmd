@@ -1,0 +1,209 @@
+---
+title: "Cyclistic Analysis"
+author: "Michael Zegas"
+date: "2023-03-13"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# **Cyclistic case study**
+
+
+## **Scenario**
+
+
+"You are a junior data analyst working in the marketing analyst team at Cyclistic, a bike-share company in Chicago. The director of marketing believes the company's future success depends on maximizing the number of annual memberships. Therefore, your team wants to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, your team will design a new marketing strategy to convert casual riders into annual members. But first, Cyclistic executives must approve your recommendations, so they must be backed up with compelling data insights and professional data visualizations"
+
+
+
+## **Business Task**
+
+The company wants to increase the annual memberships as they make up most of the total profit compared to casual bike rentals. In order to do that, the analyst and the marketing team must get insights on how casual riders and annual members differ and why would casual riders would get an annual membership.
+
+
+
+## **Ask phase**
+
+1.  How do annual members and casual riders use Cyclistic bikes differently?
+2.  Why would casual riders buy Cyclistic annual memberships?
+3.  How can Cyclistic use digital media to influence casual riders to become members?
+
+
+
+## **Prepare**
+
+### **Dataset source:**
+
+The data has been made available by Motivate International Inc under this licence <https://ride.divvybikes.com/data-license-agreement> and they are available at: <https://divvy-tripdata.s3.amazonaws.com/index.html>. The analysis is based on a 12 month period (02/2022 - 01/2023).
+
+
+
+## **Loading libraries**
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(sf)
+library(readr)
+library(tibble)
+library(geosphere)
+library(oce)
+library(lubridate)
+library(forcats)
+library(scales)
+
+```
+
+
+## **Importing datasets and assigning to variables**
+
+```{r}
+#Importing
+trips_02_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202202-divvy-tripdata/202202-divvy-tripdata.csv")
+trips_03_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202203-divvy-tripdata/202203-divvy-tripdata.csv")
+trips_04_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202204-divvy-tripdata/202204-divvy-tripdata.csv")
+trips_05_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202205-divvy-tripdata/202205-divvy-tripdata.csv")
+trips_06_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202206-divvy-tripdata/202206-divvy-tripdata.csv")
+trips_07_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202207-divvy-tripdata/202207-divvy-tripdata.csv")
+trips_08_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202208-divvy-tripdata/202208-divvy-tripdata.csv")
+trips_09_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202209-divvy-tripdata/202209-divvy-publictripdata.csv")
+trips_10_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202210-divvy-tripdata/202210-divvy-tripdata.csv")
+trips_11_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202211-divvy-tripdata/202211-divvy-tripdata.csv")
+trips_12_2022.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202212-divvy-tripdata/202212-divvy-tripdata.csv")
+trips_01_2023.csv <- read_csv("C:/Users/User/Desktop/cyclistic/Updated/202301-divvy-tripdata.csv")
+
+
+#Merging all data to one
+trips_22_23.csv <- rbind(trips_02_2022.csv, trips_03_2022.csv, trips_04_2022.csv, trips_05_2022.csv, trips_06_2022.csv, trips_07_2022.csv, trips_08_2022.csv,trips_09_2022.csv, trips_10_2022.csv, trips_11_2022.csv, trips_12_2022.csv, trips_01_2023.csv)
+
+head(trips_22_23.csv)
+
+```
+
+
+## **Process phase**
+
+```{r}
+#Creating a new column with the mean ride duration
+trips_22_23.csv$duration <- difftime(trips_22_23.csv$ended_at, trips_22_23.csv$started_at, units = "mins")
+
+#Clean data by removing n/a and assigning to new variable
+trips_clean <- drop_na(trips_22_23.csv)
+
+#Cleaning ride duration
+trips_clean$duration <- round(trips_clean$duration, digits = 1)
+
+#Separate datetime column in columns: date, day, year, day_of_week, month name
+trips_clean$date <- as.Date(trips_clean$started_at) 
+trips_clean$day <- format(as.Date( trips_clean$date), "%d")
+trips_clean$year <- format(as.Date(trips_clean$date), "%Y")
+trips_clean$day_of_week <- format(as.Date(trips_clean$date), "%A")
+trips_clean$month_name <- format(as.Date(trips_clean$date), "%b")
+
+#Changing the language from default language to English
+lookup_table <- c("Δευτέρα" = "Monday",
+                  "Τρίτη" = "Tuesday",
+                  "Τετάρτη" = "Wednesday",
+                  "Πέμπτη" = "Thursday",
+                  "Παρασκευή" = "Friday",
+                  "Σάββατο" = "Saturday",
+                  "Κυριακή" = "Sunday")
+
+trips_clean$day_of_week <- lookup_table[trips_clean$day_of_week]
+
+
+lookup_table2 <- c("Ιαν" = "January",
+                  "Φεβ" = "February",
+                  "Μαρ" = "March",
+                  "Απρ" = "April",
+                  "Μαϊ" = "May",
+                  "Ιουν" = "June",
+                  "Ιουλ" = "July",
+                  "Αυγ" = "August",
+                  "Σεπ" = "September",
+                  "Οκτ" = "October",
+                  "Νοε" = "November",
+                  "Δεκ" = "December")
+
+trips_clean$month_name <- lookup_table2[trips_clean$month_name]
+```
+
+
+## **Analyze phase**
+
+```{r}
+#Finding the mean ride duration for all rides and then for each user type
+avg_dur_total <- mean(trips_clean$duration)
+options(scipen = 999)
+avg_dur_total
+
+avg_dur_per_user <- trips_clean %>%
+  group_by(member_casual) %>%
+  summarise(avg_duration = mean(duration))
+
+avg_dur_per_user
+
+#Making a distance traveled column
+
+trips_clean$ride_distance <- distGeo(matrix(c(trips_clean$start_lng, trips_clean$start_lat), ncol = 2), matrix(c(trips_clean$end_lng, trips_clean$end_lat), ncol = 2))
+trips_clean$ride_distance <- trips_clean$ride_distance/1000
+trips_clean$ride_distance <- round(trips_clean$ride_distance, digits = 1)
+
+#Finding the mean ride distance for all users and for each user type
+avg_distance_total <- mean(trips_clean$ride_distance)
+
+avg_distance_per_user <- trips_clean %>%
+  group_by(member_casual) %>%
+  summarise(avg_dist = mean(ride_distance))
+
+avg_distance_per_user
+
+```
+
+
+## **Visualizing data**
+
+```{r}
+#Duration graph
+ggplot(avg_dur_per_user, aes(x = member_casual, y = avg_duration, fill= member_casual)) +
+  geom_col() +
+  labs(title = "Average duration per user type", x= "User Type", y= "Average duration")
+
+#Duration for weekdays graph
+trips_clean %>% 
+  group_by(member_casual, day_of_week) %>% 
+  summarise(number_of_rides = n()
+            ,average_duration = mean(duration()),.groups = 'drop') %>% 
+  arrange(member_casual, day_of_week)  %>% 
+  ggplot(aes(x = day_of_week, y = number_of_rides, fill = member_casual)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = comma) +
+  labs(title = "Number of rides by User type during the week",x="Days of the week",y="Number of rides",caption = "Data by Motivate International Inc", fill="User type") +
+  theme(legend.position="top")
+
+
+#distance graph
+ggplot(avg_distance_per_user, aes(x = member_casual, y = avg_dist, fill= member_casual)) +
+  geom_col() +
+  labs(title = "Average distance per user type", x= "User Type", y= "Average distance")
+
+#bike type graph
+trips_clean %>%
+  ggplot(aes(x = member_casual, fill = rideable_type)) +
+  geom_bar(position = "dodge") +
+  labs(x = "User Type", y = "Number of Bikes") +
+  ggtitle("Bike Type for Each User Type")
+```
+
+
+## **Conclusion**
+
+As shown by the analysis, there is not a significance difference in the average distance traveled between casual users and members. Members seem to have a similar number of rides during the weekdays but with less mean duration than the casual users. That signifies that casual users ride mostly for leisure than members who they seem to use bikes more like an alternative to public transport. 
+There is not a significant difference in the rideable type for casual users, but among members there is a clear preference in classic bikes.
+The marketing team could focus on leisure oriented advertisement in order to get more annual memberships.
+
